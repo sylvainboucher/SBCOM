@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<title>SBCOM - demo</title>
+<script type="text/javascript" src="../build/SBCOM.js"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+// enable debugging
+SBCOM.enableDebug();
+</script>
+
+<script type="text/javascript" >
+    /* template module */
+    (function(SBCOM) {
+        SBCOM.core.registerModule('template', function(sandbox) {
+        
+            // dependencies   
+            // ...    
+            // end of dependencies
+            
+            // private properties and methods
+            // ...        
+            // end of private properties and methods
+            
+            // public API           
+            return {
+                init: function() {
+                    sandbox.subscribe({'test': this.test});
+                    sandbox.publish({
+                        type: 'test',
+                        data: 'Hello world'
+                    });
+                    sandbox.unsubscribe('test');
+                },
+                destroy: function() {
+                
+                },
+                test: function(message) {
+                    alert(message);
+                }
+            };
+        });
+    }(SBCOM)); 
+    /* end template module */  
+    
+// start application   
+SBCOM.core.startAll();
+SBCOM.core.stopAll();
+</script>
+</body>
+</html>
